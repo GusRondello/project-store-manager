@@ -10,6 +10,10 @@ const productService = {
     if (!result) throw new Error('Product not found');
     return result;
   },
+  async add(name) {
+    const id = productsModel.add(name);
+    return id;
+  },
 };
 
 module.exports = productService;

@@ -14,6 +14,12 @@ const productsController = {
       res.status(404).json({ message: error.message });
     }
   },
+  async add(req, res) {
+    const { name } = req.body;
+    const id = await productService.add(name);
+    const product = await productService.getByID(id);
+    res.status(201).json(product);
+  },
 };
 
 module.exports = productsController;
