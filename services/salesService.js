@@ -30,6 +30,10 @@ const saleServices = {
     const result = await salesModel.getByID(id);
     return result;
   },
+    async delete(id) { 
+    const result = await salesModel.delete(id);
+    return result;
+  },
 };
 
 module.exports = saleServices;

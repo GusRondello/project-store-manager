@@ -34,6 +34,18 @@ const salesController = {
       res.status(404).json({ message: error.message });
     }
   },
+    async delete(req, res) {
+    try {
+      const { id } = req.params;
+      const deleted = await saleServices.delete(id);
+      
+      if (!deleted) throw new Error('Sale not found');
+
+      res.status(204).json();
+    } catch (error) {
+      res.status(404).json({ message: error.message });
+    }
+  },
 };
 
 module.exports = salesController;
