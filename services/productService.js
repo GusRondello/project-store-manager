@@ -14,6 +14,10 @@ const productService = {
     const id = productsModel.add(name);
     return id;
   },
+    async update(name, id) {
+    const result = await productsModel.update(name, id);
+    return result;
+  },
 };
 
 module.exports = productService;
