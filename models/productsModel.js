@@ -21,6 +21,11 @@ const productsModel = {
     const [{ affectedRows }] = await database.query(query, [name, id]);
     return affectedRows;
   },
+  async delete(id) {
+    const query = 'DELETE FROM StoreManager.products WHERE id = ?';
+    const [{ affectedRows }] = await database.query(query, [id]);
+    return affectedRows;
+  },
 };
 
 module.exports = productsModel;

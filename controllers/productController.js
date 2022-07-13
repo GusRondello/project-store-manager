@@ -34,6 +34,18 @@ const productsController = {
       res.status(404).json({ message: error.message });
      }
   },
+  async delete(req, res) {
+    try {
+      const { id } = req.params;
+      const deleted = await productService.delete(id);
+      
+      if (!deleted) throw new Error('Product not found');
+
+      res.status(204).json();
+    } catch (error) {
+      res.status(404).json({ message: error.message });
+    }
+  },
 };
 
 module.exports = productsController;
