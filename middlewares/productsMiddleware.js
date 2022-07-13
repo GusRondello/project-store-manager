@@ -1,5 +1,8 @@
 const Joi = require('joi');
+
+// Preferi usar a Joi conforme as dicas do readme.md
 // https://softchris.github.io/pages/joi.html#introducing-joi
+// https://joi.dev/api/?v=17.6.0
 
 const validateBody = (req, res, next) => {
   const schema = Joi.object({
