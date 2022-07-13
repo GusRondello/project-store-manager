@@ -20,6 +20,16 @@ const saleServices = {
     });
     return errorMessage;
   },
+
+  async getAll() {
+    const result = await salesModel.getAll();
+    return result;
+  },
+  
+  async getByID(id) {
+    const result = await salesModel.getByID(id);
+    return result;
+  },
 };
 
 module.exports = saleServices;
