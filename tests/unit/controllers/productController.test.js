@@ -76,12 +76,42 @@ describe('ProductController testes: ', () => {
       const req = {};
       const res = {};
 
+      res.status = sinon.stub().returns(res);
+      res.json = sinon.stub();
+
       req.body = {};
+      
+      chai.expect(productController.add(req, res)).to.be.rejectedWith(Error);
+    });
+  });
+
+  describe('#update', () => { 
+    it('Retorna o erro caso body esteja invalido', async () => {
+      const req = {};
+      const res = {};
 
       res.status = sinon.stub().returns(res);
       res.json = sinon.stub();
 
-      chai.expect(productController.add(req, res)).to.be.rejectedWith(Error);
+      req.body = {};
+      req.params = { id: 1 };
+
+      chai.expect(productController.update(req, res)).to.be.rejectedWith(Error);
+    });
+  });
+
+  describe('#delete', () => { 
+    it('Retorna o erro caso produto nao seja encontrado', async () => {
+      const req = {};
+      const res = {};
+
+      res.status = sinon.stub().returns(res);
+      res.json = sinon.stub();
+
+      req.params = { id: 1 };
+
+
+      chai.expect(productController.delete(req, res)).to.be.rejectedWith(Error);
     });
   });
 });
