@@ -31,5 +31,32 @@ describe('ProductServices testes: ', () => {
       chai.expect(getAllProducts).to.be.an('array');
     });
 
+    it('Retorna um array identico ao da data', async () => { 
+      const getAllProducts = await productService.getAll();
+      chai.expect(getAllProducts).to.be.equal(mockedData);
+    });
+  });
+
+  describe('#getByID', () => {
+    const mockedProduct = { id: 1, name: 'Martelo de Thor' };
+
+    beforeEach(async  () => {
+      sinon.stub(productsModel, 'getByID').resolves(mockedProduct);
+    });
+
+    afterEach(async  () => { 
+      productsModel.getByID.restore();
+    });
+
+    it('Retorna um objeto', async () => { 
+      const getAllProducts = await productService.getByID();
+      chai.expect(getAllProducts).to.be.a('object');
+    });
+
+    it('Retorna um objeto identico ao da data', async () => { 
+      const getAllProducts = await productService.getByID();
+      chai.expect(getAllProducts).to.be.equal(mockedProduct);
+    });
+
   });
 });
