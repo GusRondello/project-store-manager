@@ -5,6 +5,7 @@ const { validateBody } = require('../middlewares/productsMiddleware');
 const productRoutes = Router();
 
 productRoutes.get('/', productsController.getAll);
+productRoutes.get('/search', productsController.getByName);
 productRoutes.get('/:id', productsController.getByID);
 
 productRoutes.post('/', validateBody, productsController.add);

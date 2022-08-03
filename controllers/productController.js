@@ -46,6 +46,11 @@ const productsController = {
       res.status(404).json({ message: error.message });
     }
   },
+  async getByName(req, res) {
+    const { q: name } = req.query;
+    const data = await productService.getByName(name);
+    res.status(200).json(data);
+  },
 };
 
 module.exports = productsController;

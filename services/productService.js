@@ -22,6 +22,10 @@ const productService = {
     const result = await productsModel.delete(id);
     return result;
   },
+  async getByName(name) {
+    const result = await productsModel.getByName(name);
+    return result;
+  },
 };
 
 module.exports = productService;
